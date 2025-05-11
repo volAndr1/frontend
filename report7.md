@@ -37,9 +37,9 @@
   Скріншот: ![GET запит](screenshots/network-get-all.png)
   
 
-- **Оновлення сутності (PUT)**:
+- **Оновлення сутності (PATCH)**:
   
-  Скріншот: ![PUT запит](screenshots/network-update.png)
+  Скріншот: ![PATCH запит](screenshots/network-update.png)
   
 
 - **Видалення сутності (DELETE)**:
