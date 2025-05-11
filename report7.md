@@ -17,7 +17,7 @@
 Скріншот: ![Конфігурація axios.ts](screenshots/axios-config.png)
 
 
-### Приклад API-виклику (getAllEntities)
+### Приклад API-виклику (getAllPost)
 
 
 Скріншот: ![Приклад API-виклику getAllEntities](screenshots/get-all-entities.png)
