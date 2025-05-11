@@ -14,13 +14,13 @@
 ### Конфігурація axios.ts
 
 
-Скріншот: ![Конфігурація axios.ts](screenshots/axios-config.png)
+Скріншот: ![Конфігурація axios.ts](https://github.com/volAndr1/frontend/blob/c040f3aa16746072a44f69176d40d41b4f24e22a/Screenshots-lab7/webstorm64_FwPGRpVRwl.png)
 
 
 ### Приклад API-виклику (getAllPost)
 
 
-Скріншот: ![Приклад API-виклику getAllEntities](screenshots/get-all-entities.png)
+Скріншот: ![Приклад API-виклику getAllPost](https://github.com/volAndr1/frontend/blob/c040f3aa16746072a44f69176d40d41b4f24e22a/Screenshots-lab7/webstorm64_QUMucDhC8T.png)
 
 
 ## Скріншоти
@@ -29,51 +29,44 @@
 
 - **Створення сутності (POST)**:
   
-  Скріншот: ![POST запит](screenshots/network-create.png)
+  Скріншот: ![POST запит](https://github.com/volAndr1/frontend/blob/c040f3aa16746072a44f69176d40d41b4f24e22a/Screenshots-lab7/chrome_LLQCDpuJWt.png)
   
 
 - **Отримання всіх сутностей (GET)**:
   
-  Скріншот: ![GET запит](screenshots/network-get-all.png)
+  Скріншот: ![GET запит](https://github.com/volAndr1/frontend/blob/c040f3aa16746072a44f69176d40d41b4f24e22a/Screenshots-lab7/chrome_Ut6w6ATxdI.png)
   
 
 - **Оновлення сутності (PATCH)**:
   
-  Скріншот: ![PATCH запит](screenshots/network-update.png)
+  Скріншот: ![PATCH запит](https://github.com/volAndr1/frontend/blob/c040f3aa16746072a44f69176d40d41b4f24e22a/Screenshots-lab7/chrome_ORvsHJqoby.png)
   
 
 - **Видалення сутності (DELETE)**:
   
-  Скріншот: ![DELETE запит](screenshots/network-delete.png)
+  Скріншот: ![DELETE запит](https://github.com/volAndr1/frontend/blob/c040f3aa16746072a44f69176d40d41b4f24e22a/Screenshots-lab7/chrome_66UT0IYrAl.png)
   
 
 ### Вміст .env (без секретів)
 
 
-Скріншот: ![Вміст .env](screenshots/env-file.png)
+Скріншот: ![Вміст .env](https://github.com/volAndr1/frontend/blob/c040f3aa16746072a44f69176d40d41b4f24e22a/Screenshots-lab7/webstorm64_W5aYLRowk0.png)
 
 
 ### [Опціонально] Сторінка логіну та відповідь API
 
 - **Сторінка логіну**:
  
-  Скріншот: ![Сторінка логіну](screenshots/login-page.png)
+  Скріншот: ![Сторінка логіну](https://github.com/volAndr1/frontend/blob/c040f3aa16746072a44f69176d40d41b4f24e22a/Screenshots-lab7/chrome_Xo41BJBs6S.png)
 
 
 - **Відповідь API на запит логіну**:
   
-  Скріншот: ![API відповідь логіну](screenshots/login-api-response.png)
+  Скріншот: ![API відповідь логіну](https://github.com/volAndr1/frontend/blob/c040f3aa16746072a44f69176d40d41b4f24e22a/Screenshots-lab7/chrome_sYtFhEmL43.png)
  
 
-## Коментарі щодо особливостей реалізації та труднощів
+## Коментарі
 
-- **Особливості реалізації**:
-  - Використано Axios для уніфікації API-запитів, що спростило обробку заголовків та базового URL.
-  - Додано перехоплювачі запитів (interceptors) в Axios для автоматичного додавання токенів автентифікації до заголовків.
-  - Реалізовано обробку помилок API (наприклад, 401, 404, 500) з відображенням користувачу відповідних повідомлень через UI.
-  - Для оптимізації використано локальне кешування даних у браузері, щоб зменшити кількість запитів до сервера.
-
-- **Труднощі**:
-  - Виникли проблеми з CORS під час налаштування API-запитів. Вирішено шляхом коригування заголовків на стороні сервера.
-  - Обробка асинхронних запитів вимагала додаткової синхронізації стану UI, що було реалізовано через бібліотеку управління станом (наприклад, Redux або React Context).
-  - Налаштування автентифікації через токени вимагало додаткового тестування для обробки сценаріїв, коли токен застаріває.
+* Токен від API приходить у форматі `Bearer ...`, тому його потрібно вручну обрізати перед збереженням (`replace('Bearer ', '')`)
+* Axios не оновлює заголовки автоматично при зміні токена після ініціалізації — потрібно або перезавантаження сторінки, або оновлення заголовків вручну після логіну
+* Сторінка логіну стилізована за допомогою TailwindCSS
