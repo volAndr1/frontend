@@ -11,9 +11,39 @@
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
+import { Route as PostsImport } from './routes/posts'
+import { Route as LoginImport } from './routes/login'
+import { Route as EditImport } from './routes/edit'
+import { Route as CreateImport } from './routes/create'
+import { Route as PostIdImport } from './routes/$postId'
 import { Route as IndexImport } from './routes/index'
 
 // Create/Update Routes
+
+const PostsRoute = PostsImport.update({
+  path: '/posts',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const LoginRoute = LoginImport.update({
+  path: '/login',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const EditRoute = EditImport.update({
+  path: '/edit',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const CreateRoute = CreateImport.update({
+  path: '/create',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const PostIdRoute = PostIdImport.update({
+  path: '/$postId',
+  getParentRoute: () => rootRoute,
+} as any)
 
 const IndexRoute = IndexImport.update({
   path: '/',
@@ -31,12 +61,54 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexImport
       parentRoute: typeof rootRoute
     }
+    '/$postId': {
+      id: '/$postId'
+      path: '/$postId'
+      fullPath: '/$postId'
+      preLoaderRoute: typeof PostIdImport
+      parentRoute: typeof rootRoute
+    }
+    '/create': {
+      id: '/create'
+      path: '/create'
+      fullPath: '/create'
+      preLoaderRoute: typeof CreateImport
+      parentRoute: typeof rootRoute
+    }
+    '/edit': {
+      id: '/edit'
+      path: '/edit'
+      fullPath: '/edit'
+      preLoaderRoute: typeof EditImport
+      parentRoute: typeof rootRoute
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginImport
+      parentRoute: typeof rootRoute
+    }
+    '/posts': {
+      id: '/posts'
+      path: '/posts'
+      fullPath: '/posts'
+      preLoaderRoute: typeof PostsImport
+      parentRoute: typeof rootRoute
+    }
   }
 }
 
 // Create and export the route tree
 
-export const routeTree = rootRoute.addChildren({ IndexRoute })
+export const routeTree = rootRoute.addChildren({
+  IndexRoute,
+  PostIdRoute,
+  CreateRoute,
+  EditRoute,
+  LoginRoute,
+  PostsRoute,
+})
 
 /* prettier-ignore-end */
 
@@ -46,11 +118,31 @@ export const routeTree = rootRoute.addChildren({ IndexRoute })
     "__root__": {
       "filePath": "__root.ts",
       "children": [
-        "/"
+        "/",
+        "/$postId",
+        "/create",
+        "/edit",
+        "/login",
+        "/posts"
       ]
     },
     "/": {
       "filePath": "index.ts"
+    },
+    "/$postId": {
+      "filePath": "$postId.ts"
+    },
+    "/create": {
+      "filePath": "create.ts"
+    },
+    "/edit": {
+      "filePath": "edit.ts"
+    },
+    "/login": {
+      "filePath": "login.ts"
+    },
+    "/posts": {
+      "filePath": "posts.ts"
     }
   }
 }
